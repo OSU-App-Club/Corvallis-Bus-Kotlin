@@ -3,9 +3,17 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#6CA7A5</item>
+        <item name="colorPrimaryDark">#26706D</item>
+        <item name="colorAccent">#A1CDCB</item>
+    </style>
+
+    <style name="CorvallisBusTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/CorvallisBusTextAppearance</item>
+    </style>
+
+    <style name="CorvallisBusTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
     </style>
 
 </resources>
