@@ -21,7 +21,7 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        pager.adapter = CorvallisBusPagerAdapter(supportFragmentManager, applicationContext)
+        pager.adapter = CorvallisBusPagerAdapter(supportFragmentManager)
         tabLayout.setupWithViewPager(pager)
 
         // TODO: tab bar icons
@@ -57,9 +57,8 @@ class MainActivity: AppCompatActivity() {
         })
     }
 
-    class CorvallisBusPagerAdapter(fm: FragmentManager, context: Context): FragmentPagerAdapter(fm) {
-        val context = context
-        val pages = Array<Fragment?>(4, { null })
+    class CorvallisBusPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
+        val pages = Array<Fragment?>(PAGES_COUNT, { null })
 
         override fun getItem(position: Int): Fragment? {
             if (position >= PAGES_COUNT) {
@@ -73,11 +72,11 @@ class MainActivity: AppCompatActivity() {
         }
 
         fun createPage(position: Int): Fragment {
-            val bundle = Bundle()
-            bundle.putInt("position", position)
+            if (position == 0) {
+                return FavoritesFragment()
+            }
 
             val fragment = BasicFragment()
-            fragment.arguments = bundle
 
             return fragment
         }
