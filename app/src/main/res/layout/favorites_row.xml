@@ -25,6 +25,8 @@
 
             <TextView android:id="@+id/firstRouteName"
                 android:text="NOSW"
+                android:textColor="@android:color/white"
+                android:background="@android:color/black"
                 android:layout_width="42dp"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"
@@ -44,6 +46,8 @@
 
             <TextView android:id="@+id/secondRouteName"
                 android:text="3"
+                android:textColor="@android:color/white"
+                android:background="@android:color/black"
                 android:layout_width="42dp"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"

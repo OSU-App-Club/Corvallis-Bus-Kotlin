@@ -14,7 +14,7 @@ public class FavoriteStopsManager {
 
     fun getFavoriteStops(stopIds: Array<Int>, location: Location): ArrayList<FavoriteStopViewModel> {
 
-        val url = URL(API_ROOT + "/favorites?stops=11776,10308&location=${location.latitude},${location.longitude}")
+        val url = URL(API_ROOT + "/favorites?stops=11776,10308,10003&location=${location.latitude},${location.longitude}")
         val responseBody = url.readText()
 
         val mapper = jacksonObjectMapper()

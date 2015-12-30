@@ -1,6 +1,7 @@
 package org.osuappclub.corvallisbus
 
 import android.content.Context
+import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
 import android.support.v4.app.ListFragment
@@ -14,6 +15,7 @@ import com.google.android.gms.location.LocationServices
 import org.jetbrains.anko.async
 import org.jetbrains.anko.support.v4.onUiThread
 import kotlinx.android.synthetic.main.favorites_row.view.*
+import org.jetbrains.anko.backgroundColor
 import java.util.*
 
 /**
@@ -37,9 +39,6 @@ class FavoritesFragment: ListFragment() {
         builder.addConnectionCallbacks(object: GoogleApiClient.ConnectionCallbacks {
             override fun onConnected(connectionHint: Bundle?) {
                 val location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient)
-
-                Log.d("org.osuappclub.corvallisbus", "Got location")
-                Log.d("org.osuappclub.corvallisbus", "${location.latitude}, ${location.longitude}")
 
                 updateFavorites(location)
             }
@@ -102,8 +101,10 @@ class FavoritesListAdapter(context: Context, resource: Int, items: ArrayList<Fav
     fun populateView(view: View, viewModel: FavoriteStopViewModel) {
         view.stopName.text = viewModel.stopName
         view.firstRouteName.text = viewModel.firstRouteName
+        view.firstRouteName.backgroundColor = toRouteColor(viewModel.firstRouteColor) ?: Color.GRAY
         view.firstRouteArrivals.text = viewModel.firstRouteArrivals
         view.secondRouteName.text = viewModel.secondRouteName
+        view.secondRouteName.backgroundColor = toRouteColor(viewModel.secondRouteColor) ?: Color.TRANSPARENT
         view.secondRouteArrivals.text = viewModel.secondRouteArrivals
         view.isNearestStop.visibility = if (viewModel.isNearestStop) View.VISIBLE else View.INVISIBLE
         view.distanceFromUser.text = viewModel.distanceFromUser
