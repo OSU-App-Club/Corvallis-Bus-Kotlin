@@ -10,13 +10,14 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import org.jetbrains.anko.async
 import org.jetbrains.anko.support.v4.onUiThread
+import kotlinx.android.synthetic.main.favorites_row.view.*
 import java.util.*
 
 /**
  * Created by rikkigibson on 12/27/15.
  */
 class FavoritesFragment: ListFragment() {
-    var favoritesListAdapter: ArrayAdapter<String>? = null
+    var favoritesListAdapter: FavoritesListAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater?.inflate(R.layout.fragment_favorites, container, false)
@@ -27,7 +28,7 @@ class FavoritesFragment: ListFragment() {
         super.onActivityCreated(savedInstanceState)
 
         Log.d("org.osuappclub.corvallisbus", "Created activity")
-        favoritesListAdapter = ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, ArrayList<String>())
+        favoritesListAdapter = FavoritesListAdapter(context, R.layout.favorites_row, ArrayList<FavoriteStopViewModel>())
         listAdapter = favoritesListAdapter
 
         updateFavorites()
@@ -40,7 +41,7 @@ class FavoritesFragment: ListFragment() {
 
             onUiThread {
                 favoritesListAdapter?.clear()
-                favoritesListAdapter?.addAll(newFavoriteStops.map({ it.stopName }))
+                favoritesListAdapter?.addAll(newFavoriteStops)
                 favoritesListAdapter?.notifyDataSetChanged()
             }
         })
@@ -50,8 +51,24 @@ class FavoritesFragment: ListFragment() {
 /**
  * Renders favorite list items based on data.
  */
-class FavoritesListAdapter(context: Context, resource: Int): ArrayAdapter<FavoriteStopViewModel>(context, resource, arrayOf()) {
+class FavoritesListAdapter(context: Context, resource: Int, items: ArrayList<FavoriteStopViewModel>):
+        ArrayAdapter<FavoriteStopViewModel>(context, resource, items) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-        return super.getView(position, convertView, parent)
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view = inflater.inflate(R.layout.favorites_row, parent, false)
+        val viewModel = getItem(position)
+        populateView(view, viewModel)
+
+        return view
+    }
+
+    fun populateView(view: View, viewModel: FavoriteStopViewModel) {
+        view.stopName.text = viewModel.stopName
+        view.firstRouteName.text = viewModel.firstRouteName
+        view.firstRouteArrivals.text = viewModel.firstRouteArrivals
+        view.secondRouteName.text = viewModel.secondRouteName
+        view.secondRouteArrivals.text = viewModel.secondRouteArrivals
+        view.isNearestStop.visibility = if (viewModel.isNearestStop) View.VISIBLE else View.INVISIBLE
+        view.distanceFromUser.text = viewModel.distanceFromUser
     }
 }
