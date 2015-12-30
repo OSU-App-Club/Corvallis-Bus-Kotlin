@@ -1,5 +1,6 @@
 package org.osuappclub.corvallisbus
 
+import android.location.Location
 import com.fasterxml.jackson.module.kotlin.*
 import java.net.URL
 import java.util.*
@@ -11,9 +12,9 @@ const val API_ROOT = "https://corvallisb.us/api"
  */
 public class FavoriteStopsManager {
 
-    fun getFavoriteStops(stopIds: Array<Int>): ArrayList<FavoriteStopViewModel> {
-        // TODO: figure out data type for location
-        val url = URL(API_ROOT + "/favorites?stops=11776,10308&location=44.5645659,-123.2620435")
+    fun getFavoriteStops(stopIds: Array<Int>, location: Location): ArrayList<FavoriteStopViewModel> {
+
+        val url = URL(API_ROOT + "/favorites?stops=11776,10308&location=${location.latitude},${location.longitude}")
         val responseBody = url.readText()
 
         val mapper = jacksonObjectMapper()
