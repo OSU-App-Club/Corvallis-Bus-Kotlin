@@ -1,4 +1,4 @@
-package org.osuappclub.corvallisbus
+package com.jmstudios.corvallistransit
 
 import android.location.Location
 import com.fasterxml.jackson.module.kotlin.*

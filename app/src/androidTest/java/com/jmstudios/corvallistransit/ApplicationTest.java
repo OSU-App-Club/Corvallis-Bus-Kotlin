@@ -1,4 +1,4 @@
-package org.osuappclub.corvallisbus;
+package com.jmstudios.corvallistransit;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

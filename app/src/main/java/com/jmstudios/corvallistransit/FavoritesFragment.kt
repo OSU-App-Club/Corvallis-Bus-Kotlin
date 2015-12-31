@@ -1,4 +1,4 @@
-package org.osuappclub.corvallisbus
+package com.jmstudios.corvallistransit
 
 import android.content.Context
 import android.graphics.Color
@@ -53,7 +53,7 @@ class FavoritesFragment: ListFragment() {
         builder.addApi(LocationServices.API)
         googleApiClient = builder.build()
 
-        Log.d("org.osuappclub.corvallisbus", "Created activity")
+        Log.d("com.jmstudios.corvallistransit", "Created activity")
         favoritesListAdapter = FavoritesListAdapter(context, R.layout.favorites_row, ArrayList<FavoriteStopViewModel>())
         listAdapter = favoritesListAdapter
 

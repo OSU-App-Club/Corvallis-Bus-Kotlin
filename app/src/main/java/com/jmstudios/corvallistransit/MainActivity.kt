@@ -1,4 +1,4 @@
-package org.osuappclub.corvallisbus
+package com.jmstudios.corvallistransit
 
 import android.content.Context
 import android.os.Bundle

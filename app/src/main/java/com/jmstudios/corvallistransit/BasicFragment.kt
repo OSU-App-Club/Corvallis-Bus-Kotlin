@@ -1,4 +1,4 @@
-package org.osuappclub.corvallisbus
+package com.jmstudios.corvallistransit
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
