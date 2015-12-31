@@ -18,7 +18,9 @@ data class FavoriteStopViewModel(
     val secondRouteArrivals: String
 )
 
-const val MAX_ALPHA = -16777216 // because Kotlin is broken and can't deal with an unsigned hex literal
+// The reason this isn't the hex literal 0xff000000 is described at this link.
+// https://youtrack.jetbrains.com/issue/KT-4749
+const val MAX_ALPHA = -16777216
 fun toRouteColor(colorString: String): Int? {
     if (colorString.isEmpty()) {
         return null

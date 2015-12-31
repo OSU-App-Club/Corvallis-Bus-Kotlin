@@ -1,11 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#6CA7A5</item>
         <item name="colorPrimaryDark">#26706D</item>
         <item name="colorAccent">#A1CDCB</item>
+        <item name="titleTextColor">@android:color/white</item>
     </style>
 
     <style name="CorvallisBusTabLayout" parent="Widget.Design.TabLayout">

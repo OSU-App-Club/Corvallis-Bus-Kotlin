@@ -20,21 +20,16 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+        title = "Favorites"
 
         pager.adapter = CorvallisBusPagerAdapter(supportFragmentManager)
         tabLayout.setupWithViewPager(pager)
 
-        // TODO: tab bar icons
-        val drawable = ContextCompat.getDrawable(applicationContext, R.mipmap.ic_launcher)
-        tabLayout.getTabAt(0).setIcon(ContextCompat.getDrawable(applicationContext, R.drawable.favorite))
-        tabLayout.getTabAt(1).setIcon(drawable)
-        tabLayout.getTabAt(2).setIcon(ContextCompat.getDrawable(applicationContext, R.drawable.ic_warning_black_24dp))
-        tabLayout.getTabAt(3).setIcon(ContextCompat.getDrawable(applicationContext, R.drawable.ic_settings_black_24dp))
-
-
-        val supportActionBar = supportActionBar
-        // Set default title text
-        supportActionBar.title = "Favorites"
+        tabLayout.getTabAt(0).setIcon(ContextCompat.getDrawable(applicationContext, R.drawable.favorites_24dp))
+        tabLayout.getTabAt(1).setIcon(ContextCompat.getDrawable(applicationContext, R.drawable.ic_directions_bus_white_24dp))
+        tabLayout.getTabAt(2).setIcon(ContextCompat.getDrawable(applicationContext, R.drawable.ic_warning_white_24dp))
+        tabLayout.getTabAt(3).setIcon(ContextCompat.getDrawable(applicationContext, R.drawable.ic_settings_white_24dp))
 
         pager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
@@ -42,7 +37,7 @@ class MainActivity: AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-                supportActionBar.title = when (position) {
+                toolbar.title = when (position) {
                     0 -> "Favorites"
                     1 -> "Browse"
                     2 -> "Service Alerts"

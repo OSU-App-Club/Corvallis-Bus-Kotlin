@@ -27,7 +27,7 @@
                 android:text="NOSW"
                 android:textColor="@android:color/white"
                 android:background="@android:color/black"
-                android:layout_width="42dp"
+                android:layout_width="50dp"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"/>
@@ -48,7 +48,7 @@
                 android:text="3"
                 android:textColor="@android:color/white"
                 android:background="@android:color/black"
-                android:layout_width="42dp"
+                android:layout_width="50dp"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
