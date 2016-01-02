@@ -69,11 +69,11 @@ class FavoritesFragment: ListFragment() {
         super.onStop()
     }
 
-    fun updateFavorites(location: Location) {
+    fun updateFavorites(location: Location?) {
         async({
 
             // TODO: cache and reload from cache onActivityCreated
-            val newFavoriteStops = FavoriteStopsManager().getFavoriteStops(arrayOf(), location)
+            val newFavoriteStops = FavoriteStopsManager().getFavoriteStops(arrayOf(11776,10308,10003), location)
 
             onUiThread {
                 favoritesListAdapter?.clear()

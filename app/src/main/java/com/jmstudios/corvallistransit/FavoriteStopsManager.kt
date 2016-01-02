@@ -12,9 +12,10 @@ const val API_ROOT = "https://corvallisb.us/api"
  */
 public class FavoriteStopsManager {
 
-    fun getFavoriteStops(stopIds: Array<Int>, location: Location): ArrayList<FavoriteStopViewModel> {
-
-        val url = URL(API_ROOT + "/favorites?stops=11776,10308,10003&location=${location.latitude},${location.longitude}")
+    fun getFavoriteStops(stopIds: Array<Int>, location: Location?): ArrayList<FavoriteStopViewModel> {
+        val stopsString = stopIds.joinToString(",")
+        val locationString = if (location == null) "" else "${location.latitude},${location.longitude}"
+        val url = URL("$API_ROOT/favorites?stops=$stopsString&location=$locationString")
         val responseBody = url.readText()
 
         val mapper = jacksonObjectMapper()

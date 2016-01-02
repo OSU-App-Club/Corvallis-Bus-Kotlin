@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import com.google.android.gms.maps.SupportMapFragment
 import kotlinx.android.synthetic.activity_main.*
 
 const val PAGES_COUNT = 4
@@ -67,8 +68,9 @@ class MainActivity: AppCompatActivity() {
         }
 
         fun createPage(position: Int): Fragment {
-            if (position == 0) {
-                return FavoritesFragment()
+            when (position) {
+                0 -> return FavoritesFragment()
+                1 -> return SupportMapFragment.newInstance()
             }
 
             val fragment = BasicFragment()
