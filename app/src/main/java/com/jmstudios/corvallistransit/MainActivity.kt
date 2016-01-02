@@ -70,7 +70,7 @@ class MainActivity: AppCompatActivity() {
         fun createPage(position: Int): Fragment {
             when (position) {
                 0 -> return FavoritesFragment()
-                1 -> return SupportMapFragment.newInstance()
+                1 -> return BrowseFragment()
             }
 
             val fragment = BasicFragment()
